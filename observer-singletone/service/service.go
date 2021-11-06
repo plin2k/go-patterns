@@ -5,21 +5,23 @@ import (
 	"github.com/plin2k/go-patterns/observer-singletone/observer"
 )
 
+const (
+	ServiceName = "SomeService"
+)
+
 type Service struct {
 	Name             string
 	observerRegistry *observer.Observe
-	ServiceName      string
 }
 
 func New(name string, observer *observer.Observe) *Service {
 	return &Service{
 		Name:             name,
-		ServiceName:      "service",
 		observerRegistry: observer,
 	}
 }
 func (s *Service) SomeFunction() {
 	fmt.Println("Some Name Assigned")
 	s.Name = "Some Name"
-	s.observerRegistry.Notify(s.ServiceName, "some:event", s)
+	s.observerRegistry.Notify(ServiceName, "some:event", s)
 }
