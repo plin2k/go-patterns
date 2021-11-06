@@ -7,7 +7,7 @@ import (
 	"github.com/plin2k/go-patterns/factory-method/factory/pumpkin_pie"
 )
 
-func GetPie(pieType string) (interfaces.IPie, error) {
+func GetPie(pieType string) (interfaces.Pie, error) {
 	switch pieType {
 	case apple_pie.Name:
 		return apple_pie.New(), nil

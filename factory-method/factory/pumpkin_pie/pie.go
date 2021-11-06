@@ -11,7 +11,7 @@ type ApplePie struct {
 	pie.Pie
 }
 
-func New() interfaces.IPie {
+func New() interfaces.Pie {
 	return &ApplePie{
 		Pie: pie.Pie{
 			Size: 15,

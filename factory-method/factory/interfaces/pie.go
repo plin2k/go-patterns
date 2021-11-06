@@ -1,7 +1,6 @@
 package interfaces
 
-// TODO: rename interface
-type IPie interface {
+type Pie interface {
 	SetSize(int)
 	GetSize() int
 	SetForm(string)

@@ -16,7 +16,7 @@ func main() {
 	printDetails(pumpkinPie)
 }
 
-func printDetails(g interfaces.IPie) {
+func printDetails(g interfaces.Pie) {
 	fmt.Printf("Form: %s\n", g.GetForm())
 	fmt.Printf("Size: %d\n", g.GetSize())
 	fmt.Printf("Fill: %s\n", g.GetFill())
