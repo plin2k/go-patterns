@@ -26,7 +26,7 @@ type Observe struct {
 	observerList map[string]map[string][]Observer
 }
 
-func New() *Observe {
+func GetInstance() *Observe {
 	once.Do(func() {
 		singleInstance = &Observe{
 			observerList: make(map[string]map[string][]Observer),

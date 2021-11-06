@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	obs := observer.New()
+	obs := observer.GetInstance()
 	srv := service.New("Some Name For Service", obs)
 
 	observerNotify := notify.New()
