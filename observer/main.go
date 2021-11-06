@@ -12,6 +12,8 @@ func main() {
 
 	observerNotify := notify.New()
 
+	srv.SomeFunction()
+
 	srv.Register(observerNotify, "some:event")
 
 	srv.SomeFunction()

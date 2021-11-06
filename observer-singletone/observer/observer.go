@@ -36,7 +36,7 @@ func New() *Observe {
 }
 
 func (o *Observe) Register(name string, observer Observer, event string) {
-	if len(o.observerList[name]) == 0 {
+	if _, ok := o.observerList[name]; !ok {
 		o.observerList[name] = make(map[string][]Observer)
 	}
 	for _, obs := range o.observerList[name][event] {
@@ -48,6 +48,9 @@ func (o *Observe) Register(name string, observer Observer, event string) {
 }
 
 func (o *Observe) Unregister(name string, observer Observer, event string) {
+	if _, ok := o.observerList[name]; !ok {
+		return
+	}
 	for i, obs := range o.observerList[name][event] {
 		if obs.GetId() == observer.GetId() {
 			if len(o.observerList[name][event]) > 0 {
@@ -61,6 +64,9 @@ func (o *Observe) Unregister(name string, observer Observer, event string) {
 }
 
 func (o *Observe) Notify(name string, event string, data interface{}) {
+	if _, ok := o.observerList[name]; !ok {
+		return
+	}
 	observerList := o.observerList[name][event]
 	if event != AllEventsIndex {
 		observerList = append(observerList, o.observerList[name][AllEventsIndex]...)

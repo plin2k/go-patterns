@@ -12,13 +12,15 @@ func main() {
 
 	observerNotify := notify.New()
 
-	obs.Register("service", observerNotify, "some:event")
+	srv.SomeFunction()
+
+	obs.Register(srv.ServiceName, observerNotify, "some:event")
 
 	srv.SomeFunction()
 
-	obs.Unregister("service", observerNotify, "some:event")
+	obs.Unregister(srv.ServiceName, observerNotify, "some:event")
 
-	obs.Register("service", observerNotify, observer.AllEventsIndex)
+	obs.Register(srv.ServiceName, observerNotify, observer.AllEventsIndex)
 
 	srv.SomeFunction()
 }

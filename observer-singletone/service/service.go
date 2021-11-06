@@ -6,18 +6,20 @@ import (
 )
 
 type Service struct {
-	Name     string
-	observer *observer.Observe
+	Name             string
+	observerRegistry *observer.Observe
+	ServiceName      string
 }
 
 func New(name string, observer *observer.Observe) *Service {
 	return &Service{
-		Name:     name,
-		observer: observer,
+		Name:             name,
+		ServiceName:      "service",
+		observerRegistry: observer,
 	}
 }
 func (s *Service) SomeFunction() {
 	fmt.Println("Some Name Assigned")
 	s.Name = "Some Name"
-	s.observer.Notify("service", "some:event", s)
+	s.observerRegistry.Notify(s.ServiceName, "some:event", s)
 }
